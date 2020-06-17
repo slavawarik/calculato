@@ -83,11 +83,13 @@ namespace Calculator
 
         private void Button18_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.IndexOf(',') == -1)
-            {
-                textBox1.Text += ",";
+            if (textBox1.Text != "")
+            { 
+                if (textBox1.Text.IndexOf(',') == -1)
+                {
+                    textBox1.Text += ",";
+                }
             }
-            
         }
 
         private void Button12_Click(object sender, EventArgs e)
@@ -96,7 +98,6 @@ namespace Calculator
             { 
                 numberOfTextBox1 = float.Parse(textBox1.Text);
             count = 2;
-            textBox2.Text = numberOfTextBox1.ToString() + "-";
 
             Console.Out.WriteLine("a: " + numberOfTextBox1.ToString() + "b: " + numberOfTextBox2.ToString());
 
@@ -104,14 +105,13 @@ namespace Calculator
             {
                 Console.WriteLine("a: " + numberOfTextBox1.ToString() + "b: " + numberOfTextBox2.ToString());
                 numberOfTextBox2 = numberOfTextBox2 - numberOfTextBox1;
-                textBox2.Text = numberOfTextBox2.ToString() + "-";
             }
             else
             {
                 numberOfTextBox2 = numberOfTextBox1;
             }
-
-            textBox1.Clear();
+                textBox2.Text = numberOfTextBox2.ToString() + "-";
+                textBox1.Clear();
             }
         }
 
@@ -121,7 +121,7 @@ namespace Calculator
             {
                 numberOfTextBox1 = float.Parse(textBox1.Text);
                 count = 3;
-                textBox2.Text = numberOfTextBox2.ToString();
+              
 
                 Console.Out.WriteLine("a: " + numberOfTextBox1.ToString() + "b: " + numberOfTextBox2.ToString());
 
@@ -129,13 +129,12 @@ namespace Calculator
                 {
                     Console.WriteLine("a: " + numberOfTextBox1.ToString() + "b: " + numberOfTextBox2.ToString());
                     numberOfTextBox2 = numberOfTextBox2 * numberOfTextBox1;
-                    textBox2.Text = numberOfTextBox2.ToString();
                 }
                 else
                 {
                     numberOfTextBox2 = numberOfTextBox1;
                 }
-
+                textBox2.Text = numberOfTextBox2.ToString() + "*";
                 textBox1.Clear();
             }
         }
@@ -146,7 +145,6 @@ namespace Calculator
             {
                 numberOfTextBox1 = float.Parse(textBox1.Text);
                 count = 4;
-                textBox2.Text = numberOfTextBox2.ToString() + "/";
 
                 Console.Out.WriteLine("a: " + numberOfTextBox1.ToString() + "b: " + numberOfTextBox2.ToString());
 
@@ -154,13 +152,13 @@ namespace Calculator
                 {
                     Console.WriteLine("a: " + numberOfTextBox1.ToString() + "b: " + numberOfTextBox2.ToString());
                     numberOfTextBox2 = numberOfTextBox2 / numberOfTextBox1;
-                    textBox2.Text = numberOfTextBox2.ToString() + "/";
                 }
                 else
                 {
                     numberOfTextBox2 = numberOfTextBox1;
                 }
 
+                textBox2.Text = numberOfTextBox2.ToString() + "/";
                 textBox1.Clear();
             }
 
@@ -169,8 +167,11 @@ namespace Calculator
 
         private void Button15_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text != "")
+            { 
             calculate();
             textBox1.Text = "";
+            }
         }
 
         private void Button11_Click(object sender, EventArgs e)
@@ -178,7 +179,6 @@ namespace Calculator
             if (textBox1.Text != "")
             { 
             numberOfTextBox1 = float.Parse(textBox1.Text);
-            textBox2.Text = numberOfTextBox2.ToString() + "+";
             count = 1;
             Console.Out.WriteLine("a: " + numberOfTextBox1.ToString() + "b: " + numberOfTextBox2.ToString());
 
@@ -186,14 +186,14 @@ namespace Calculator
             {
                 Console.WriteLine("a: " + numberOfTextBox1.ToString() + "b: " + numberOfTextBox2.ToString());
                 numberOfTextBox2 = numberOfTextBox2 + numberOfTextBox1;
-                textBox2.Text = numberOfTextBox2.ToString() + "+";
             }
             else
             {
                 numberOfTextBox2 = numberOfTextBox1;
             }
+                textBox2.Text = numberOfTextBox2.ToString() + "+";
 
-            textBox1.Clear();
+                textBox1.Clear();
             }
         }
 
@@ -215,6 +215,11 @@ namespace Calculator
             {
                 textBox1.Text = textBox1.Text + text[i];
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void calculate()
